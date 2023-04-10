@@ -1,3 +1,7 @@
+import PromptSync from "prompt-sync";
+
+const prompt = PromptSync();
+
 export class View {
   textFirstEnter: string;
   textSecondEnter: string;
@@ -6,6 +10,13 @@ export class View {
     this.textFirstEnter = "Enter first value ";
     this.textSecondEnter = "Enter Second value ";
     this.textOperatorEnter = "Enter operator (+,-,*,/)  ";
+  }
+
+  getInputs() {
+    const firstValue = prompt(this.textFirstEnter);
+    const operator = prompt(this.textOperatorEnter);
+    const secondValue = prompt(this.textSecondEnter);
+    return { firstValue, operator, secondValue };
   }
 
   logFirstEnter() {
@@ -22,5 +33,12 @@ export class View {
 
   logResult(result: string | number) {
     console.log(result);
+  }
+
+  logErrorDivideByZero() {
+    console.log("Result not a number, cannot divide by zero");
+  }
+  logErrorInvalidOperator() {
+    console.log("Invalid");
   }
 }
